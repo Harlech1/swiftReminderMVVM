@@ -19,6 +19,7 @@
 		D174CFE72B6C25280017DE2D /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D174CFE62B6C25280017DE2D /* Reminder.swift */; };
 		D174CFE92B6CF13E0017DE2D /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D174CFE82B6CF13E0017DE2D /* DetailsVC.swift */; };
 		D1951D352BD013AB00733DB4 /* ReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1951D342BD013AB00733DB4 /* ReminderManager.swift */; };
+		D1951D372BD0173B00733DB4 /* RemindersVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1951D362BD0173B00733DB4 /* RemindersVC+UI.swift */; };
 		D1A5A9DA2BCFF4180006C711 /* DetailsVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A5A9D92BCFF4180006C711 /* DetailsVC+UI.swift */; };
 		D1AE0EFD2BCE913D00DB619B /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE0EFC2BCE913D00DB619B /* String+Extensions.swift */; };
 		D1AE0EFF2BCE919F00DB619B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D1AE0EFE2BCE919F00DB619B /* Localizable.xcstrings */; };
@@ -39,6 +40,7 @@
 		D174CFE62B6C25280017DE2D /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		D174CFE82B6CF13E0017DE2D /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 		D1951D342BD013AB00733DB4 /* ReminderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderManager.swift; sourceTree = "<group>"; };
+		D1951D362BD0173B00733DB4 /* RemindersVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemindersVC+UI.swift"; sourceTree = "<group>"; };
 		D1A5A9D92BCFF4180006C711 /* DetailsVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailsVC+UI.swift"; sourceTree = "<group>"; };
 		D1AE0EFC2BCE913D00DB619B /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		D1AE0EFE2BCE919F00DB619B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -139,8 +141,9 @@
 		D1A5A9D72BCFF34D0006C711 /* Reminders */ = {
 			isa = PBXGroup;
 			children = (
-				D174CFCE2B6C1F140017DE2D /* RemindersVC.swift */,
 				D12D4FCD2B7539B300300D59 /* ReminderCell.swift */,
+				D174CFCE2B6C1F140017DE2D /* RemindersVC.swift */,
+				D1951D362BD0173B00733DB4 /* RemindersVC+UI.swift */,
 				D174CFE42B6C251C0017DE2D /* RemindersVM.swift */,
 			);
 			path = Reminders;
@@ -249,6 +252,7 @@
 				D1A5A9DA2BCFF4180006C711 /* DetailsVC+UI.swift in Sources */,
 				D174CFE92B6CF13E0017DE2D /* DetailsVC.swift in Sources */,
 				D1951D352BD013AB00733DB4 /* ReminderManager.swift in Sources */,
+				D1951D372BD0173B00733DB4 /* RemindersVC+UI.swift in Sources */,
 				D12D4FCA2B752B8C00300D59 /* DateFormatterManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,7 +331,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -384,7 +388,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -410,17 +414,17 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.turkerkizilcik.Reminder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -443,17 +447,17 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.turkerkizilcik.Reminder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
