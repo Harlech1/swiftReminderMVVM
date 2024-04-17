@@ -9,7 +9,7 @@ import UIKit
 
 class ReminderCell: UITableViewCell {
     // MARK: Stack Views
-    var titleHorizontalView : UIStackView = {
+    let titleHorizontalView : UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.distribution = .fillEqually
@@ -18,7 +18,7 @@ class ReminderCell: UITableViewCell {
         return view
     }()
 
-    var infoHorizontalView : UIStackView = {
+    let infoHorizontalView : UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.distribution = .fillEqually
@@ -28,32 +28,32 @@ class ReminderCell: UITableViewCell {
         return view
     }()
     // MARK: Labels
-    var titleLabel : UILabel = {
+    let titleLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    var subtitleLabel : UILabel = {
+    let subtitleLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.placeholderText
         return label
     }()
 
-    var dateLabel : UILabel = {
+    let dateLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    var timeLabel : UILabel = {
+    let timeLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     // MARK: Buttons & Actions
-    var checkBoxButton: UIButton = {
+    let checkBoxButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.contentVerticalAlignment = .fill
@@ -63,7 +63,7 @@ class ReminderCell: UITableViewCell {
         return button
     }()
 
-    var checkBoxAction: (() -> Void)?
+    var checkBoxAction: (() -> Void)? // TODO: why cant this be let
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

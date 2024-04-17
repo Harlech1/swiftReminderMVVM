@@ -9,7 +9,7 @@ import UIKit
 
 class DetailsVC: UIViewController  {
 
-    var remindersVM = RemindersVM()
+    let remindersVM = RemindersVM()
 
     var selectedIndex = -1 // TODO: here
 

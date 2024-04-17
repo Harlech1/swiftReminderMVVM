@@ -9,7 +9,7 @@ import UIKit
 
 class RemindersVC: UIViewController, UITableViewDataSource {
 
-    var remindersVM = RemindersVM()
+    private let remindersVM = RemindersVM()
 
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -22,7 +22,7 @@ class RemindersVC: UIViewController, UITableViewDataSource {
         return tableView
     }()
 
-    var chosenIndex = 0
+    private var chosenIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
