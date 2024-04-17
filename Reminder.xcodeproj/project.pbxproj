@@ -59,14 +59,6 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		D12D4FCC2B7539A100300D59 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				D12D4FCD2B7539B300300D59 /* ReminderCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		D174CFBE2B6C1F140017DE2D = {
 			isa = PBXGroup;
 			children = (
@@ -87,13 +79,11 @@
 			isa = PBXGroup;
 			children = (
 				D174CFDE2B6C1F4A0017DE2D /* App */,
-				D12D4FCC2B7539A100300D59 /* Cells */,
-				D174CFEA2B6D02B10017DE2D /* Extensions */,
+				D1A5A9D52BCFF33D0006C711 /* Controllers */,
 				D12D4FCB2B752CF800300D59 /* Managers */,
 				D174CFE02B6C22C00017DE2D /* Model */,
 				D1AE0EFB2BCBFA9800DB619B /* Resources */,
-				D174CFDF2B6C22B80017DE2D /* View */,
-				D174CFE12B6C22CC0017DE2D /* ViewModel */,
+				D1A5A9D82BCFF3610006C711 /* Utilities */,
 			);
 			path = Reminder;
 			sourceTree = "<group>";
@@ -107,29 +97,12 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		D174CFDF2B6C22B80017DE2D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				D174CFCE2B6C1F140017DE2D /* RemindersVC.swift */,
-				D174CFE82B6CF13E0017DE2D /* DetailsVC.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		D174CFE02B6C22C00017DE2D /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				D174CFE62B6C25280017DE2D /* Reminder.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		D174CFE12B6C22CC0017DE2D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				D174CFE42B6C251C0017DE2D /* RemindersVM.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		D174CFEA2B6D02B10017DE2D /* Extensions */ = {
@@ -140,12 +113,47 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		D1A5A9D52BCFF33D0006C711 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D1A5A9D62BCFF3480006C711 /* Details */,
+				D1A5A9D72BCFF34D0006C711 /* Reminders */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D1A5A9D62BCFF3480006C711 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				D174CFE82B6CF13E0017DE2D /* DetailsVC.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		D1A5A9D72BCFF34D0006C711 /* Reminders */ = {
+			isa = PBXGroup;
+			children = (
+				D174CFCE2B6C1F140017DE2D /* RemindersVC.swift */,
+				D12D4FCD2B7539B300300D59 /* ReminderCell.swift */,
+				D174CFE42B6C251C0017DE2D /* RemindersVM.swift */,
+			);
+			path = Reminders;
+			sourceTree = "<group>";
+		};
+		D1A5A9D82BCFF3610006C711 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D174CFEA2B6D02B10017DE2D /* Extensions */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		D1AE0EFB2BCBFA9800DB619B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D1AE0EFE2BCE919F00DB619B /* Localizable.xcstrings */,
-				D174CFD32B6C1F160017DE2D /* Assets.xcassets */,
 				D174CFD82B6C1F160017DE2D /* Info.plist */,
+				D174CFD32B6C1F160017DE2D /* Assets.xcassets */,
+				D1AE0EFE2BCE919F00DB619B /* Localizable.xcstrings */,
 				D174CFD52B6C1F160017DE2D /* LaunchScreen.storyboard */,
 				D174CFD02B6C1F140017DE2D /* Main.storyboard */,
 			);
