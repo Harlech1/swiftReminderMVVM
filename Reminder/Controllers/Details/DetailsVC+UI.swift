@@ -16,7 +16,7 @@ extension DetailsVC {
         textField.backgroundColor = .secondarySystemGroupedBackground
         textField.layer.cornerRadius = 12
         textField.font = UIFont.boldSystemFont(ofSize: 18)
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: textField.frame.height))
         textField.leftView = paddingView
         textField.leftViewMode = .always
         textField.returnKeyType = .done
@@ -30,7 +30,7 @@ extension DetailsVC {
         textView.backgroundColor = .secondarySystemGroupedBackground
         textView.accessibilityLabel = "description".localized()
         textView.font = UIFont.systemFont(ofSize: 18)
-        textView.textContainerInset = UIEdgeInsets(top: 10, left: 6, bottom: 0, right: 0)
+        textView.textContainerInset = UIEdgeInsets(top: 4, left: 4, bottom: 0, right: 0)
         textView.layer.cornerRadius = 12
         return textView
     }
@@ -132,32 +132,32 @@ extension DetailsVC {
         descriptionTextView.inputAccessoryView = toolbar
     }
 
-    func setupConstraints() { // TODO: 4-8-16
+    func setupConstraints() {
         NSLayoutConstraint.activate([
-            titleTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12),
-            titleTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            titleTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            titleTextField.heightAnchor.constraint(equalToConstant: 40),
+            titleTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            titleTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            titleTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            titleTextField.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.05),
 
-            descriptionTextView.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 10),
-            descriptionTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            descriptionTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            descriptionTextView.heightAnchor.constraint(equalToConstant: 150),
+            descriptionTextView.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 16),
+            descriptionTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            descriptionTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            descriptionTextView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.2),
 
-            placeholderLabel.leadingAnchor.constraint(equalTo: descriptionTextView.leadingAnchor, constant: 10),
-            placeholderLabel.topAnchor.constraint(equalTo: descriptionTextView.topAnchor, constant: 10),
+            placeholderLabel.leadingAnchor.constraint(equalTo: descriptionTextView.leadingAnchor, constant: 8),
+            placeholderLabel.topAnchor.constraint(equalTo: descriptionTextView.topAnchor, constant: 6),
 
-            dateStackView.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 10),
-            dateStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            dateStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            dateStackView.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 16),
+            dateStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            dateStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
 
-            timeStackView.topAnchor.constraint(equalTo: dateStackView.bottomAnchor, constant: 10),
-            timeStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            timeStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            timeStackView.topAnchor.constraint(equalTo: dateStackView.bottomAnchor, constant: 16),
+            timeStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            timeStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
 
-            saveOrUpdateButton.topAnchor.constraint(equalTo: timeStackView.bottomAnchor, constant: 10),
+            saveOrUpdateButton.topAnchor.constraint(equalTo: timeStackView.bottomAnchor, constant: 16),
             saveOrUpdateButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            saveOrUpdateButton.widthAnchor.constraint(equalToConstant: 72),
+            saveOrUpdateButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.1),
         ])
     }
 }
