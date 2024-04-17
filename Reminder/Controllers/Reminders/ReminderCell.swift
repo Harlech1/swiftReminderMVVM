@@ -104,7 +104,7 @@ class ReminderCell: UITableViewCell {
     }
 
     private func setupConstraints() {
-        NSLayoutConstraint.activate([ // TODO: change constants
+        NSLayoutConstraint.activate([
             checkBoxButton.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             checkBoxButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             checkBoxButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
@@ -123,8 +123,6 @@ class ReminderCell: UITableViewCell {
     }
 
     // MARK: @Objc Functions
-    @objc private func toggleCheckBox() {
-    }
 
     @objc private func checkBoxTapped() {
         checkBoxButton.setImage(UIImage(systemName: "circle.inset.filled"), for: .normal)
