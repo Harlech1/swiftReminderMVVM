@@ -134,17 +134,7 @@ extension RemindersVC: UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReminderCell", for: indexPath) as? ReminderCell else { return ReminderCell() }
 
         let reminder = remindersVM.reminders[indexPath.row]
-        cell.titleLabel.text = reminder.title
-        cell.titleLabel.accessibilityLabel = "\("title".localized()): \(reminder.title)"
-
-        cell.subtitleLabel.text = reminder.description
-        cell.subtitleLabel.accessibilityLabel = "\("description".localized()): \(reminder.description)"
-
-        cell.dateLabel.text = reminder.date
-        cell.dateLabel.accessibilityLabel = "\("date".localized()): \(reminder.date)"
-
-        cell.timeLabel.text = reminder.time
-        cell.timeLabel.accessibilityLabel = "\("time".localized()): \(reminder.time)"
+        cell.configure(reminder: reminder)
 
         cell.checkBoxAction = { [weak self] in
             self?.remindersVM.deleteReminder(at: indexPath.row)

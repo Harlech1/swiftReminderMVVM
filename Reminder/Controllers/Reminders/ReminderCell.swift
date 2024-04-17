@@ -75,6 +75,21 @@ class ReminderCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func configure(reminder: Reminder) {
+        titleLabel.text = reminder.title
+        titleLabel.accessibilityLabel = "\("title".localized()): \(reminder.title)"
+
+        subtitleLabel.text = reminder.description
+        subtitleLabel.accessibilityLabel = "\("description".localized()): \(reminder.description)"
+
+        dateLabel.text = reminder.date
+        dateLabel.accessibilityLabel = "\("date".localized()): \(reminder.date)"
+
+        timeLabel.text = reminder.time
+        timeLabel.accessibilityLabel = "\("time".localized()): \(reminder.time)"
+    }
+    
     // MARK: View Functions
     private func addSubviews() {
         contentView.addSubview(infoHorizontalView)
