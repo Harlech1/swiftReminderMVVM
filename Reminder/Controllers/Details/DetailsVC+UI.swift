@@ -103,4 +103,61 @@ extension DetailsVC {
         button.layer.cornerRadius = 12
         return button
     }
+
+    func addSubviews() {
+        view.addSubview(titleTextField)
+        view.addSubview(descriptionTextView)
+        descriptionTextView.addSubview(placeholderLabel)
+        view.addSubview(dateStackView)
+        view.addSubview(timeStackView)
+        view.addSubview(saveOrUpdateButton)
+
+        dateStackView.addArrangedSubview(dateLabel)
+        dateStackView.addArrangedSubview(datePicker)
+
+        timeStackView.addArrangedSubview(timeLabel)
+        timeStackView.addArrangedSubview(timePicker)
+    }
+
+    func addTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    func setupToolbar() {
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.sizeToFit()
+        toolbar.items = [flexibleSpace, doneButton]
+        descriptionTextView.inputAccessoryView = toolbar
+    }
+
+    func setupConstraints() { // TODO: 4-8-16
+        NSLayoutConstraint.activate([
+            titleTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12),
+            titleTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            titleTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            titleTextField.heightAnchor.constraint(equalToConstant: 40),
+
+            descriptionTextView.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 10),
+            descriptionTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            descriptionTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            descriptionTextView.heightAnchor.constraint(equalToConstant: 150),
+
+            placeholderLabel.leadingAnchor.constraint(equalTo: descriptionTextView.leadingAnchor, constant: 10),
+            placeholderLabel.topAnchor.constraint(equalTo: descriptionTextView.topAnchor, constant: 10),
+
+            dateStackView.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 10),
+            dateStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            dateStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+
+            timeStackView.topAnchor.constraint(equalTo: dateStackView.bottomAnchor, constant: 10),
+            timeStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            timeStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+
+            saveOrUpdateButton.topAnchor.constraint(equalTo: timeStackView.bottomAnchor, constant: 10),
+            saveOrUpdateButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            saveOrUpdateButton.widthAnchor.constraint(equalToConstant: 72),
+        ])
+    }
 }
