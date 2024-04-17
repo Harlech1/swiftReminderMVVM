@@ -97,8 +97,9 @@ extension DetailsVC {
         button.accessibilityLabel = "saveReminderAccessibility".localized()
         button.accessibilityHint = "saveReminderHint".localized()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor.secondarySystemGroupedBackground
-        button.setTitleColor(UIColor.systemOrange, for: .normal)
+        button.backgroundColor = UIColor.systemOrange
+        button.setTitleColor(UIColor.secondarySystemGroupedBackground, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.addTarget(self, action: #selector(saveOrUpdateButtonTapped), for: .touchUpInside)
         button.layer.cornerRadius = 12
         return button
