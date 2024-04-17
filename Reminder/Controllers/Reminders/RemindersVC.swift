@@ -21,16 +21,41 @@ class RemindersVC: UIViewController, UITableViewDataSource {
         tableView.accessibilityHint = ReminderManager.shared.reminders.isEmpty ? "emptyListHint".localized() : nil
         return tableView
     }()
-    
+
+    let containerView: UIView = {
+        let view: UIView = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    let upperLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.text = "noReminders".localized()
+        label.font = UIFont.boldSystemFont(ofSize: 21)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    let lowerLabel: UILabel = {
+        let label = UILabel()
+        label.text = "noRemindersDetailed".localized()
+        label.textAlignment = .center
+        label.numberOfLines = 3
+        label.textColor = .systemGray
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     var selectedReminder : Reminder?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.addSubview(tableView)
-
         title = "reminders".localized()
 
+        addSubviews()
         addAddButton()
         setUpConstraints()
     }
@@ -41,6 +66,8 @@ class RemindersVC: UIViewController, UITableViewDataSource {
 
         ReminderManager.shared.loadReminders()
         tableView.reloadData()
+
+        setNoRemindersView()
 
         remindersVM.initNotifications()
     }

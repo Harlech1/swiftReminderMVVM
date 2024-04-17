@@ -120,6 +120,40 @@
         }
       }
     },
+    "noReminders" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Reminders"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anımsatıcı Yok"
+          }
+        }
+      }
+    },
+    "noRemindersDetailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No reminders added yet. Start adding reminders by clicking the add button."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Henüz anımsatıcı eklenmedi. Ekleme tuşuna basarak anımsatıcı ekleyiniz."
+          }
+        }
+      }
+    },
     "reminderFor" : {
       "extractionState" : "manual",
       "localizations" : {
