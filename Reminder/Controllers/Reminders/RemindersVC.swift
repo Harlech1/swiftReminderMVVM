@@ -91,6 +91,8 @@ class RemindersVC: UIViewController, UITableViewDataSource {
 
     // MARK: Override Functions
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+
         remindersVM.loadReminders()
         tableView.reloadData() // TODO: figure it out
 
@@ -102,6 +104,7 @@ class RemindersVC: UIViewController, UITableViewDataSource {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         if segue.identifier == "toDetailsVC" {
             let destinationVC = segue.destination as! DetailsVC
             destinationVC.selectedIndex = chosenIndex
