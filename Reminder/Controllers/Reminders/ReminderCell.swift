@@ -90,20 +90,20 @@ class ReminderCell: UITableViewCell {
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([ // TODO: change constants
-            checkBoxButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            checkBoxButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            checkBoxButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            checkBoxButton.widthAnchor.constraint(equalToConstant: 40),
+            checkBoxButton.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            checkBoxButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            checkBoxButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            checkBoxButton.widthAnchor.constraint(equalToConstant: 28),
 
-            titleHorizontalView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            titleHorizontalView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            titleHorizontalView.trailingAnchor.constraint(equalTo: infoHorizontalView.leadingAnchor, constant: -4),
-            titleHorizontalView.leadingAnchor.constraint(equalTo: checkBoxButton.trailingAnchor, constant: 16),
+            titleHorizontalView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            titleHorizontalView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            titleHorizontalView.trailingAnchor.constraint(equalTo: infoHorizontalView.leadingAnchor, constant: -8),
+            titleHorizontalView.leadingAnchor.constraint(equalTo: checkBoxButton.trailingAnchor, constant: 8),
 
-            infoHorizontalView.widthAnchor.constraint(equalToConstant: 100),
-            infoHorizontalView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            infoHorizontalView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            infoHorizontalView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            infoHorizontalView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.3),
+            infoHorizontalView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            infoHorizontalView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            infoHorizontalView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
         ])
     }
 
