@@ -21,8 +21,8 @@ class RemindersVC: UIViewController, UITableViewDataSource {
         tableView.accessibilityHint = ReminderManager.shared.reminders.isEmpty ? "emptyListHint".localized() : nil
         return tableView
     }()
-
-    private var chosenIndex = 0
+    
+    var selectedReminder : Reminder?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +107,7 @@ class RemindersVC: UIViewController, UITableViewDataSource {
         super.prepare(for: segue, sender: sender)
         if segue.identifier == "toDetailsVC" {
             let destinationVC = segue.destination as! DetailsVC
-            destinationVC.selectedIndex = chosenIndex
+            destinationVC.recievedReminder = selectedReminder
         }
     }
 
@@ -129,7 +129,7 @@ extension RemindersVC: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        chosenIndex = indexPath.row
+        selectedReminder = ReminderManager.shared.reminders[indexPath.row]
         performSegue(withIdentifier: "toDetailsVC", sender: nil)
     }
 

@@ -8,11 +8,6 @@
 import UIKit
 
 class DetailsVC: UIViewController  {
-
-    let remindersVM = RemindersVM()
-
-    var selectedIndex = -1 // TODO: here
-
     lazy var titleTextField = initTitleTextField()
     lazy var descriptionTextView = initDescriptionTextView()
     lazy var placeholderLabel = initPlaceholderLabel()
@@ -25,6 +20,8 @@ class DetailsVC: UIViewController  {
     lazy var saveOrUpdateButton = initSaveOrUpdateButton()
 
     let toolbar = UIToolbar()
+
+    var recievedReminder : Reminder?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +39,8 @@ class DetailsVC: UIViewController  {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
-        if selectedIndex != -1 { // TODO: here
-            loadReminderDetails()   
+        if recievedReminder != nil {
+            loadReminderDetails()
             saveOrUpdateButton.setTitle("update".localized(), for: .normal)
         }
 
@@ -60,15 +57,15 @@ class DetailsVC: UIViewController  {
             let description = descriptionTextView.text
         else { return }
 
-        if selectedIndex == -1 {
-            // save button clicked here
+        if recievedReminder == nil {
             ReminderManager.shared.addReminder(title: title, description: description, date: date, time: time)
         } else {
-            // update button clicked here
-            ReminderManager.shared.reminders[selectedIndex].title = title
-            ReminderManager.shared.reminders[selectedIndex].description = description
-            ReminderManager.shared.reminders[selectedIndex].date = date
-            ReminderManager.shared.reminders[selectedIndex].time = time
+            if let index = ReminderManager.shared.reminders.firstIndex(where: { $0 == recievedReminder }) {
+                ReminderManager.shared.reminders[index].date = date
+                ReminderManager.shared.reminders[index].time = time
+                ReminderManager.shared.reminders[index].title = title
+                ReminderManager.shared.reminders[index].description = description
+            }
         }
 
         ReminderManager.shared.saveReminders()
@@ -83,13 +80,12 @@ class DetailsVC: UIViewController  {
  // MARK: - Privates
 private extension DetailsVC {
     func loadReminderDetails() {
-        titleTextField.text = ReminderManager.shared.reminders[selectedIndex].title
-        descriptionTextView.text = ReminderManager.shared.reminders[selectedIndex].description
-
-        let dateString = ReminderManager.shared.reminders[selectedIndex].date
-        let timeString = ReminderManager.shared.reminders[selectedIndex].time
+        titleTextField.text = recievedReminder?.title
+        descriptionTextView.text = recievedReminder?.description
 
         guard
+            let dateString = recievedReminder?.date,
+            let timeString = recievedReminder?.time,
             let date = DateFormatterManager.shared.dateFormatter.date(from: dateString),
             let time = DateFormatterManager.shared.timeFormatter.date(from: timeString)
         else { return }

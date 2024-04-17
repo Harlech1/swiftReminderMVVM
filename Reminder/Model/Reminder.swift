@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Reminder : Codable {
+struct Reminder : Codable, Equatable {
     var title: String
     var description: String
     var date: String
