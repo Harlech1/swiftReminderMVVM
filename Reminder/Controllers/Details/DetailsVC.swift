@@ -62,16 +62,16 @@ class DetailsVC: UIViewController  {
 
         if selectedIndex == -1 {
             // save button clicked here
-            remindersVM.addReminder(title: title, description: description, date: date, time: time)
+            ReminderManager.shared.addReminder(title: title, description: description, date: date, time: time)
         } else {
             // update button clicked here
-            remindersVM.reminders[selectedIndex].title = title
-            remindersVM.reminders[selectedIndex].description = description
-            remindersVM.reminders[selectedIndex].date = date
-            remindersVM.reminders[selectedIndex].time = time
+            ReminderManager.shared.reminders[selectedIndex].title = title
+            ReminderManager.shared.reminders[selectedIndex].description = description
+            ReminderManager.shared.reminders[selectedIndex].date = date
+            ReminderManager.shared.reminders[selectedIndex].time = time
         }
 
-        remindersVM.saveReminders()
+        ReminderManager.shared.saveReminders()
 
         self.navigationController?.popViewController(animated: true)
     }
@@ -83,11 +83,11 @@ class DetailsVC: UIViewController  {
  // MARK: - Privates
 private extension DetailsVC {
     func loadReminderDetails() {
-        titleTextField.text = remindersVM.reminders[selectedIndex].title
-        descriptionTextView.text = remindersVM.reminders[selectedIndex].description
+        titleTextField.text = ReminderManager.shared.reminders[selectedIndex].title
+        descriptionTextView.text = ReminderManager.shared.reminders[selectedIndex].description
 
-        let dateString = remindersVM.reminders[selectedIndex].date
-        let timeString = remindersVM.reminders[selectedIndex].time
+        let dateString = ReminderManager.shared.reminders[selectedIndex].date
+        let timeString = ReminderManager.shared.reminders[selectedIndex].time
 
         guard
             let date = DateFormatterManager.shared.dateFormatter.date(from: dateString),

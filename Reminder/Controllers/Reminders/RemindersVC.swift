@@ -17,8 +17,8 @@ class RemindersVC: UIViewController, UITableViewDataSource {
         tableView.register(ReminderCell.self, forCellReuseIdentifier: "ReminderCell")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.accessibilityLabel = remindersVM.reminders.isEmpty ? "emptyListAccessibility".localized() : nil
-        tableView.accessibilityHint = remindersVM.reminders.isEmpty ? "emptyListHint".localized() : nil
+        tableView.accessibilityLabel = ReminderManager.shared.reminders.isEmpty ? "emptyListAccessibility".localized() : nil
+        tableView.accessibilityHint = ReminderManager.shared.reminders.isEmpty ? "emptyListHint".localized() : nil
         return tableView
     }()
 
@@ -93,12 +93,12 @@ class RemindersVC: UIViewController, UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
-        remindersVM.loadReminders()
-        tableView.reloadData() // TODO: figure it out
+        ReminderManager.shared.loadReminders()
+        tableView.reloadData()
 
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
 
-        for reminder in remindersVM.reminders {
+        for reminder in ReminderManager.shared.reminders {
             scheduleNotification(for: reminder)
         }
     }
@@ -125,7 +125,7 @@ class RemindersVC: UIViewController, UITableViewDataSource {
 // MARK: - Table View Extension
 extension RemindersVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return remindersVM.reminders.count
+        return ReminderManager.shared.reminders.count
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -136,12 +136,12 @@ extension RemindersVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReminderCell", for: indexPath) as? ReminderCell else { return ReminderCell() }
 
-        let reminder = remindersVM.reminders[indexPath.row]
+        let reminder = ReminderManager.shared.reminders[indexPath.row]
         cell.configure(reminder: reminder)
 
-        cell.checkBoxAction = { [weak self] in
-            self?.remindersVM.deleteReminder(at: indexPath.row)
-            self?.remindersVM.saveReminders()
+        cell.checkBoxAction = {
+            ReminderManager.shared.deleteReminder(at: indexPath.row)
+            ReminderManager.shared.saveReminders()
             tableView.reloadData()
         }
         return cell

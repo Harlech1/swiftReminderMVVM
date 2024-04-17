@@ -5,40 +5,52 @@
 //  Created by Türker Kızılcık on 1.02.2024.
 //
 
-import Foundation
+import UserNotifications
 
 class RemindersVM {
-    var reminders: [Reminder] = []
+    var reminders = ReminderManager.shared.reminders
 
-    let encoder = JSONEncoder()
-    let decoder = JSONDecoder()
+    func initNotifications() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
 
-    init() {
-        loadReminders()
-    }
-
-    func addReminder(title: String, description: String, date: String, time: String) {
-        let newReminder = Reminder(title: title, description: description, date: date, time: time, isChecked: false)
-        reminders.append(newReminder)
-    }
-
-    func saveReminders() {
-        if let encodedData = try? encoder.encode(reminders) {
-            UserDefaults.standard.set(encodedData, forKey: "reminders")
+        for reminder in reminders {
+            scheduleNotification(for: reminder)
         }
     }
 
-    func loadReminders() {
-        if let remindersData = UserDefaults.standard.data(forKey: "reminders") {
-            if let decodedReminders = try? decoder.decode([Reminder].self, from: remindersData) {
-                reminders = decodedReminders
+    func scheduleNotification(for reminder: Reminder) {
+        let content = UNMutableNotificationContent()
+        content.title = "\("reminderFor".localized()) \(reminder.title)"
+        content.body = reminder.description
+
+        guard
+            let date = DateFormatterManager.shared.dateFormatter.date(from: reminder.date),
+            let time = DateFormatterManager.shared.timeFormatter.date(from: reminder.time)
+        else { return }
+
+        var triggerComponents = DateComponents()
+        let calendar = Calendar.current
+
+        let dateComponents = calendar.dateComponents([.day, .month, .year], from: date)
+        let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
+
+        triggerComponents.day = dateComponents.day
+        triggerComponents.month = dateComponents.month
+        triggerComponents.year = dateComponents.year
+        triggerComponents.hour = timeComponents.hour
+        triggerComponents.minute = timeComponents.minute
+
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
+
+        let identifier = UUID().uuidString
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Couldn't create a reminder, error: \(error.localizedDescription)")
+            } else {
+                print("Notification created successfully.")
             }
         }
     }
-
-    func deleteReminder(at index: Int) {
-        guard index < reminders.count else { return }
-        reminders.remove(at: index)
-    }
 }
-
