@@ -175,11 +175,10 @@ extension DetailsVC {
             ReminderManager.shared.addReminder(title: title, description: description, date: date, time: time)
         } else {
             if let index = ReminderManager.shared.reminders.firstIndex(where: { $0 == recievedReminder }) {
-                var reminder = ReminderManager.shared.reminders[index]
-                reminder.date = date
-                reminder.time = time
-                reminder.title = title
-                reminder.description = description
+                ReminderManager.shared.reminders[index].title = title
+                ReminderManager.shared.reminders[index].description = description
+                ReminderManager.shared.reminders[index].date = date
+                ReminderManager.shared.reminders[index].time = time
             }
         }
 
