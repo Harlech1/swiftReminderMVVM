@@ -21,7 +21,7 @@ class DetailsVC: UIViewController  {
 
     let toolbar = UIToolbar()
 
-    var recievedReminder : Reminder?
+    var receivedReminder : Reminder?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class DetailsVC: UIViewController  {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
-        guard recievedReminder != nil else { return }
+        guard receivedReminder != nil else { return }
 
         saveOrUpdateButton.setTitle("update".localized(), for: .normal)
         loadReminderDetails()

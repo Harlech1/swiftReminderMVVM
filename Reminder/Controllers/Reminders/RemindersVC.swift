@@ -46,7 +46,7 @@ class RemindersVC: UIViewController, UITableViewDataSource {
         super.prepare(for: segue, sender: sender)
         if segue.identifier == "toDetailsVC" {
             let destinationVC = segue.destination as! DetailsVC
-            destinationVC.recievedReminder = selectedReminder
+            destinationVC.receivedReminder = selectedReminder
         }
     }
 
