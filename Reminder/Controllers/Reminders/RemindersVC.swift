@@ -11,42 +11,10 @@ class RemindersVC: UIViewController, UITableViewDataSource {
 
     private let remindersVM = RemindersVM()
 
-    lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(ReminderCell.self, forCellReuseIdentifier: "ReminderCell")
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.accessibilityLabel = ReminderManager.shared.reminders.isEmpty ? "emptyListAccessibility".localized() : nil
-        tableView.accessibilityHint = ReminderManager.shared.reminders.isEmpty ? "emptyListHint".localized() : nil
-        return tableView
-    }()
-
-    let containerView: UIView = {
-        let view: UIView = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    let upperLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.text = "noReminders".localized()
-        label.font = UIFont.boldSystemFont(ofSize: 21)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    let lowerLabel: UILabel = {
-        let label = UILabel()
-        label.text = "noRemindersDetailed".localized()
-        label.textAlignment = .center
-        label.numberOfLines = 3
-        label.textColor = .systemGray
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    lazy var tableView = initTableView()
+    lazy var noReminderView = initNoReminderView()
+    lazy var noRemindersTitleLabel = initNoReminderTitleLabel()
+    lazy var noReminderSubtitleLabel = initNoReminderSubtitleLabel()
 
     var selectedReminder : Reminder?
 
