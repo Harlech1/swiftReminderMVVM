@@ -39,11 +39,10 @@ class DetailsVC: UIViewController  {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
-        if recievedReminder != nil {
-            loadReminderDetails()
-            saveOrUpdateButton.setTitle("update".localized(), for: .normal)
-        }
+        guard recievedReminder != nil else { return }
 
+        saveOrUpdateButton.setTitle("update".localized(), for: .normal)
+        loadReminderDetails()
         placeholderLabel.isHidden = !descriptionTextView.text.isEmpty
     }
 }

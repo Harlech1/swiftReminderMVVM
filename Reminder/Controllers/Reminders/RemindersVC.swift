@@ -32,6 +32,8 @@ class RemindersVC: UIViewController, UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
+        selectedReminder = nil
+
         ReminderManager.shared.loadReminders()
         tableView.reloadData()
 
@@ -46,6 +48,10 @@ class RemindersVC: UIViewController, UITableViewDataSource {
             let destinationVC = segue.destination as! DetailsVC
             destinationVC.recievedReminder = selectedReminder
         }
+    }
+
+    @objc func addButtonTapped() {
+        performSegue(withIdentifier: "toDetailsVC", sender: nil)
     }
 }
 // MARK: - UITableViewDelegate

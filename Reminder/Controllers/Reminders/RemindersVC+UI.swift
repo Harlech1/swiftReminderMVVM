@@ -90,11 +90,6 @@ extension RemindersVC {
             noReminderSubtitleLabel.bottomAnchor.constraint(equalTo: noReminderView.bottomAnchor, constant: -8),
         ])
     }
-    
-    @objc func addButtonTapped() {
-        selectedReminder = nil
-        performSegue(withIdentifier: "toDetailsVC", sender: nil)
-    }
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
