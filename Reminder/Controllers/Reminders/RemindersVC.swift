@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RemindersVC: UIViewController, UITableViewDataSource {
+class RemindersVC: UIViewController {
 
     private let remindersVM = RemindersVM()
 
@@ -54,8 +54,8 @@ class RemindersVC: UIViewController, UITableViewDataSource {
         performSegue(withIdentifier: "toDetailsVC", sender: nil)
     }
 }
-// MARK: - UITableViewDelegate
-extension RemindersVC: UITableViewDelegate {
+// MARK: - UITableViewDelegate, UITableViewDataSource
+extension RemindersVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ReminderManager.shared.reminders.count
     }
