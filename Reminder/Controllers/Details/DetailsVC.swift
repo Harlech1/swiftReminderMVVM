@@ -31,7 +31,7 @@ class DetailsVC: UIViewController  {
         title = "details".localized()
         
         addSubviews()
-        addTapGesture()
+        setupKeyboardDismissGesture()
         setupToolbar()
         setupConstraints()
     }

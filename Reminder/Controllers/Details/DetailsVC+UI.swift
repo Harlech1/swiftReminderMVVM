@@ -120,7 +120,7 @@ extension DetailsVC {
         timeStackView.addArrangedSubview(timePicker)
     }
 
-    func addTapGesture() {
+    func setupKeyboardDismissGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
     }
