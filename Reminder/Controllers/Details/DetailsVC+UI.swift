@@ -162,47 +162,7 @@ extension DetailsVC {
         ])
     }
 
-    @objc func saveOrUpdateButtonTapped() {
-        let date = DateFormatterManager.shared.dateFormatter.string(from: datePicker.date)
-        let time = DateFormatterManager.shared.timeFormatter.string(from: timePicker.date)
-
-        guard
-            let title = titleTextField.text,
-            let description = descriptionTextView.text
-        else { return }
-
-        if recievedReminder == nil {
-            ReminderManager.shared.addReminder(title: title, description: description, date: date, time: time)
-        } else {
-            if let index = ReminderManager.shared.reminders.firstIndex(where: { $0 == recievedReminder }) {
-                ReminderManager.shared.reminders[index].title = title
-                ReminderManager.shared.reminders[index].description = description
-                ReminderManager.shared.reminders[index].date = date
-                ReminderManager.shared.reminders[index].time = time
-            }
-        }
-
-        ReminderManager.shared.saveReminders()
-
-        self.navigationController?.popViewController(animated: true)
-    }
-
     @objc func dismissKeyboard() {
         view.endEditing(true)
-    }
-
-    func loadReminderDetails() {
-        titleTextField.text = recievedReminder?.title
-        descriptionTextView.text = recievedReminder?.description
-
-        guard
-            let dateString = recievedReminder?.date,
-            let timeString = recievedReminder?.time,
-            let date = DateFormatterManager.shared.dateFormatter.date(from: dateString),
-            let time = DateFormatterManager.shared.timeFormatter.date(from: timeString)
-        else { return }
-
-        datePicker.date = date
-        timePicker.date = time
     }
 }
